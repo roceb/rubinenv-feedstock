@@ -3,6 +3,6 @@ azure:
 build_platform:
   linux_aarch64: linux_64
   osx_arm64: osx_64
-test: native
+test: native_and_emulated
 provider:
   linux_aarch64: default
