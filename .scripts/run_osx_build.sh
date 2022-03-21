@@ -41,6 +41,11 @@ export CONDA_SOLVER="libmamba"
 export CONDA_LIBMAMBA_SOLVER_NO_CHANNELS_FROM_INSTALLED=1
 
 
+echo -e "\n\nInstalling ['conda-forge-ci-setup=3'] and conda-build."
+mamba install --update-specs --quiet --yes --channel conda-forge \
+    conda-build pip boa conda-forge-ci-setup=3
+mamba update --update-specs --yes --quiet --channel conda-forge \
+    conda-build pip boa conda-forge-ci-setup=3
 
 
 
@@ -77,6 +82,7 @@ if [[ -f LICENSE.txt ]]; then
   cp LICENSE.txt "recipe/recipe-scripts-license.txt"
 fi
 
+
 if [[ "${BUILD_WITH_CONDA_DEBUG:-0}" == 1 ]]; then
     if [[ "x${BUILD_OUTPUT_ID:-}" != "x" ]]; then
         EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --output-id ${BUILD_OUTPUT_ID}"
@@ -88,22 +94,9 @@ if [[ "${BUILD_WITH_CONDA_DEBUG:-0}" == 1 ]]; then
     # Drop into an interactive shell
     /bin/bash
 else
-
-    if [[ "${HOST_PLATFORM}" != "${BUILD_PLATFORM}" ]]; then
-        EXTRA_CB_OPTIONS="${EXTRA_CB_OPTIONS:-} --no-test"
-    fi
-
-    conda-build ./recipe -m ./.ci_support/${CONFIG}.yaml \
+    conda mambabuild ./recipe -m ./.ci_support/${CONFIG}.yaml \
         --suppress-variables ${EXTRA_CB_OPTIONS:-} \
-        --clobber-file ./.ci_support/clobber_${CONFIG}.yaml \
-        --extra-meta flow_run_id="$flow_run_id" remote_url="$remote_url" sha="$sha"
-
-    ( startgroup "Inspecting artifacts" ) 2> /dev/null
-
-    # inspect_artifacts was only added in conda-forge-ci-setup 4.9.4
-    command -v inspect_artifacts >/dev/null 2>&1 && inspect_artifacts --recipe-dir ./recipe -m ./.ci_support/${CONFIG}.yaml || echo "inspect_artifacts needs conda-forge-ci-setup >=4.9.4"
-
-    ( endgroup "Inspecting artifacts" ) 2> /dev/null
+        --clobber-file ./.ci_support/clobber_${CONFIG}.yaml
     ( startgroup "Validating outputs" ) 2> /dev/null
 
     validate_recipe_outputs "${FEEDSTOCK_NAME}"

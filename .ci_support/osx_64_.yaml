@@ -7,15 +7,7 @@ apr:
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
-c_stdlib:
-- macosx_deployment_target
-c_stdlib_version:
-- '10.13'
-cffi:
-- '1'
-cfitsio:
-- 4.4.0
+- '12'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -23,11 +15,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '16'
-eigen:
-- '3.4'
-fftw:
-- '3'
+- '12'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
