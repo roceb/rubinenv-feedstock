@@ -96,16 +96,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `rubin-env, rubin-env-extras, rubin-env-nosysroot` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `rubin-env, rubin-env-extras, rubin-env-nosysroot, rubin-env-rsp` can be installed with `conda`:
 
 ```
-conda install rubin-env rubin-env-extras rubin-env-nosysroot
+conda install rubin-env rubin-env-extras rubin-env-nosysroot rubin-env-rsp
 ```
 
 or with `mamba`:
 
 ```
-mamba install rubin-env rubin-env-extras rubin-env-nosysroot
+mamba install rubin-env rubin-env-extras rubin-env-nosysroot rubin-env-rsp
 ```
 
 It is possible to list all of the versions of `rubin-env` available on your platform with `conda`:
