@@ -295,6 +295,57 @@ outputs:
         # grep pin-it output for yarn dependency
         - pin-it rubin-env-rsp | grep "yarn="
 
+  - name: rubin-env-developer
+    requirements:
+      host:
+        - python
+      run:
+        - {{ pin_subpackage("rubin-env", exact=True) }}
+        - black
+        - bokeh
+        - python-build
+        - dask-jobqueue
+        - datashader
+        - fastparquet
+        - ffmpeg
+        - holoviews
+        - hvplot
+        - imagemagick
+        - ipdb
+        - ipython
+        - isort
+        - jedi
+        - jupyter
+        - line_profiler
+        - lsst-documenteer-pipelines
+        - lsst-documenteer-technote
+        - mypy
+        - mysqlclient
+        - numba
+        - panel
+        - pdbpp  # [not aarch64]
+        - pep8
+        - postgresql
+        - pre-commit
+        - psycopg2
+        - pyct
+        - pydocstyle
+        - pyflakes
+        - pyvo
+        - snakeviz
+        - types-click
+        - types-deprecated
+        - types-pkg_resources
+        - types-python-dateutil
+        - types-pyyaml
+        - types-requests
+        - types-setuptools
+        - types-urllib3
+    test:
+      commands:
+        # grep pin-it output for black dependency
+        - pin-it rubin-env-developer | grep "black"
+
   - name: rubin-env-extras
     requirements:
       host:
