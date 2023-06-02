@@ -216,7 +216,7 @@ outputs:
         - {{ pin_subpackage("rubin-env", exact=True) }}
         # All are from sciplat-lab unless otherwise stated
         - astroplan # sims
-        - astrowidgets
+        - astrowidgets >=0.3
         - awkward
         - awkward-numba
         - black
@@ -236,7 +236,7 @@ outputs:
         - freetype-py
         - gcsfs
         - geoviews
-        - ginga >=3,<4
+        - ginga >=3
         - graphviz
         - holoviews
         - hvplot
@@ -303,7 +303,7 @@ outputs:
         - python
       run:
         - {{ pin_subpackage("rubin-env", exact=True) }}
-        - astrowidgets
+        - astrowidgets >=0.3
         - black
         - bokeh
         - python-build
