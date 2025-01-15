@@ -1,17 +1,19 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '10.13'
-MACOSX_SDK_VERSION:
-- '10.13'
 apr:
 - '1'
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '16'
+- '13'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
+cdt_name:
+- conda
 cffi:
 - '1'
 cfitsio:
-- 4.4.0
+- 4.5.0
 channel_sources:
 - conda-forge
 channel_targets:
@@ -19,9 +21,11 @@ channel_targets:
 curl:
 - '8'
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '16'
+- '13'
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:cos7
 eigen:
 - '3.4'
 fftw:
@@ -29,33 +33,31 @@ fftw:
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '12'
+- '13'
 gsl:
 - '2.7'
 libaprutil:
 - '1'
 libblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 libboost_python_devel:
-- '1.82'
+- '1.84'
 libcblas:
-- 3.9 *netlib
+- 3.9.* *netlib
 libcxx:
-- '16'
+- '18'
 liblapack:
-- 3.9 *netlib
+- 3.9.* *netlib
 liblapacke:
-- 3.9 *netlib
+- 3.9.* *netlib
 log4cxx:
 - 1.2.0
-macos_machine:
-- x86_64-apple-darwin13.4.0
 minuit2:
 - '6'
 ndarray:
 - '1'
 numpy:
-- 1.26.4
+- '2.0'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -67,7 +69,7 @@ python_impl:
 starlink_ast:
 - 9.2.10
 target_platform:
-- osx-64
+- linux-64
 wcslib:
 - '7.7'
 xpa:
